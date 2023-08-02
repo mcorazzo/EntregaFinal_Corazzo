@@ -1,11 +1,11 @@
-import NavLinks from "./NavLinks"
+import NavBar from "./NavBar"
 import CartWidget from "./components/CartWidget"
 
 function Header() {
     return (
-        <header id="header" className="header flex justify-between py-4 px-2 text-white">
+        <header id="header" className="header color1 flex justify-between p-5 text-white">
             <h1>Corazzo Cueros</h1>
-            <NavLinks
+            <NavBar
                 link1="Inicio"
                 link2="Tienda"
                 link3="Contacto"

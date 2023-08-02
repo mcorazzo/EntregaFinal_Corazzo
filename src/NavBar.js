@@ -1,4 +1,4 @@
-function NavLinks(parametros) {
+function NavBar(parametros) {
 
     return (
         <nav className="flex gap-4">
@@ -10,4 +10,4 @@ function NavLinks(parametros) {
 }
 
 
-export default NavLinks
+export default NavBar

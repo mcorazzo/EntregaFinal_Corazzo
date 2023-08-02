@@ -1,10 +1,7 @@
-import NavLinks from "./NavLinks"
-
 function Footer() {
     return (
-        <footer>
-            <p>&copy; copyright 2023 - Horacio Gutierrez</p>
-            <NavLinks />
+        <footer className="color1 text-center p-4 text-sm font-bold">
+            <p> Mariano Corazzo - &copy; Copyright 2023</p>
         </footer>
     )
 }
