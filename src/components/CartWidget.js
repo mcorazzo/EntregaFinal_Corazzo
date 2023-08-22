@@ -1,10 +1,14 @@
+import { NavLink } from "react-router-dom";
+
 function CartWidget() {
   return (
-    <div className="divcart">
-        <div><i className="material-icons">shopping_cart</i></div>
-        <div className="circle">3</div>
-    </div>
-  )
+    <NavLink to="/carrito">
+      <div className="divcart">
+        <i className="material-icons">shopping_cart</i>
+        <span className="circle">3</span>
+      </div>
+    </NavLink>
+  );
 }
 
-export default CartWidget
+export default CartWidget;
