@@ -5,12 +5,13 @@ function NavBar() {
   return (
     <>
       <nav className="flex gap-4">        
-        <NavLink to="/category/jewelery">Categoria Joyas</NavLink>
-        <NavLink to="/category/electronics">Categoria Electronicos</NavLink>       
+        <NavLink to="/category/electronics">Electrónicos</NavLink>       
+        <NavLink to="/category/jewelery">Joyería</NavLink>
+        <NavLink to="/category/clothing">Vestimenta</NavLink>
       </nav>
       <CartWidget />
     </> 
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

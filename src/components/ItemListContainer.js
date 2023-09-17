@@ -1,37 +1,42 @@
 import React, { useEffect, useState } from "react";
-import Presentacional from "./Presentacional";
+import Presentational from "./Presentational";
 import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 function ItemListContainer() {
-  const [allData, setAllData] = useState([]);
+  const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const { categoryId } = useParams();
 
   useEffect(() => {
-    getProductos();
+    // Usar fetch para cargar datos de la Fake Store API
+    fetch("https://fakestoreapi.com/products")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Error al cargar los datos.");
+        }
+        return response.json();
+      })
+      .then(allProducts => {
+        setData(allProducts);
+        toast.success("Se cargaron todos los productos");
+      })
+      .catch(error => {
+        console.error("Hubo un error al cargar los datos de la API: ", error);
+        toast.error("Error al cargar los datos.");
+      });
   }, []);
 
   useEffect(() => {
     if (categoryId) {
-      const filtered = allData.filter((item) => item.category === categoryId);
+      const filtered = data.filter((item) => item.category === categoryId);
       setFilteredData(filtered);
     } else {
-      setFilteredData(allData);
+      setFilteredData(data);
     }
-  }, [categoryId, allData]);
+  }, [categoryId, data]);
 
-  const getProductos = () => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => {
-        setAllData(json);
-        setFilteredData(json);
-      });
-  };
-
-  return <Presentacional data={filteredData} />;
+  return <Presentational data={filteredData} />;
 }
 
 export default ItemListContainer;
-
-

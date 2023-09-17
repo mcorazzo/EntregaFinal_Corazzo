@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+Documentación del Proyecto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Descripción:
+Este proyecto es una aplicación web que permite a los usuarios visualizar detalles de productos y agregarlos a un carrito de compras. La información de los productos se almacena een una base de datos, lo que facilita su mantenimiento y actualización.
 
-## Available Scripts
+Tecnologías Utilizadas:
+React: Biblioteca de JavaScript para la construcción de interfaces de usuario.
+React Router: Biblioteca para la gestión de rutas en aplicaciones React.
+Firebase Firestore (anteriormente): Usado para la persistencia y consulta de datos. Sonner: Biblioteca para mostrar notificaciones toast.
+Context API de React: Usado para la gestión del estado global, especialmente para el carrito de compras.
 
-In the project directory, you can run:
+Uso:
+La aplicación brinda las siguientes funcionalidades a sus usuarios:
 
-### `npm start`
+Los usuarios pueden desplazarse y explorar diferentes productos disponibles en la tienda.
+Gracias al sistema de rutas implementado con React Router, cada producto puede tener su propia URL única, facilitando la compartición y el acceso directo.
+Vista Detallada de Productos:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Al seleccionar un producto en particular, los usuarios son dirigidos a una página de detalles.
+Esta vista proporciona información detallada del producto, incluyendo imágenes, descripción, precio y otras características relevantes.
+Agregar Productos al Carrito:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Desde la vista detallada, los usuarios tienen la posibilidad de agregar productos al carrito de compras.
+Se puede especificar la cantidad de unidades de un producto para agregar al carrito, permitiendo a los usuarios comprar múltiples unidades de un mismo artículo.
+Notificaciones Toast:
 
-### `npm test`
+Durante la interacción con la aplicación, los usuarios reciben notificaciones tipo "toast" que informan sobre acciones específicas.
+Por ejemplo, al cargar un producto con éxito, se mostrará una notificación indicando que la acción fue exitosa.
+Finalizar Compra:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Una vez que los usuarios hayan agregado todos los productos deseados al carrito, pueden dirigirse a la sección de "checkout" o finalización de compra.
+En esta sección, se les pedirá que completen un formulario con información relevante para la entrega y el pago.
+Tras enviar el formulario, se iniciará el proceso de compra y se notificará al usuario sobre el estado de su pedido.
+Vista de Carrito:
 
-### `npm run build`
+Los usuarios pueden ver todos los productos agregados al carrito en una vista consolidada.
+Aquí pueden revisar los productos seleccionados, la cantidad de cada uno, el precio total y modificar la cantidad o eliminar productos según lo deseen.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Instalación y Configuración:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clonar el Repositorio:
+git clone [URL_DEL_REPOSITORIO]
 
-### `npm run eject`
+Navegar al directorio del proyecto:
+cd [NOMBRE_DEL_DIRECTORIO]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Instalar las dependencias:
+Utilizando npm:
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Ejecutar la aplicación:
+npm start
+Esto iniciará la aplicación en http://localhost:3000/.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Instalación de Firebase:
+Para agregar Firebase a tu proyecto de JavaScript/React, primero debes instalar el SDK de Firebase:
 
-## Learn More
+npm install firebase
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Configuración de Firebase en la Consola:
+Ve a Firebase Console.
+Haz clic en "Agregar proyecto" y sigue los pasos para crear un nuevo proyecto.
+Una vez que hayas creado tu proyecto, selecciona la opción "Agregar Firebase a tu aplicación web".
+Te proporcionarán un fragmento de código con la configuración de tu aplicación. Se 
+verá algo así:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+var firebaseConfig = {
+  apiKey: "tu_api_key",
+  authDomain: "tu_proyecto.firebaseapp.com",
+  projectId: "tu_proyecto",
+  storageBucket: "tu_proyecto.appspot.com",
+  messagingSenderId: "tu_messaging_sender_id",
+  appId: "tu_app_id",
+  measurementId: "G-tu_measurement_id"
+};
 
-### Code Splitting
+Integración con React:
+Crea un nuevo archivo llamado firebase.js en tu proyecto.
+Importa firebase y luego inicializa firebase con la configuración que obtuviste en el paso anterior:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+import { initializeApp } from "firebase/app";
 
-### Analyzing the Bundle Size
+const firebaseConfig = {
+  // Tu configuración aquí
+};
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+const app = initializeApp(firebaseConfig);
+Exporta las funciones o características específicas que desees utilizar en tu aplicación, como autenticación, base de datos, almacenamiento, etc.
+Por ejemplo, para Firestore (base de datos):
 
-### Making a Progressive Web App
+import { getFirestore } from "firebase/firestore";
+const db = getFirestore();
+export { db };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Uso en tu Aplicación React:
 
-### Advanced Configuration
+Ahora puedes importar y usar Firebase en cualquier componente de React:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+import { db } from "./firebase";
+Y luego usar db para interactuar con Firestore, o cualquier otro servicio de Firebase que hayas configurado.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
